@@ -1,40 +1,52 @@
-"use client";
-
-import { use } from "react";
 import { products } from "@/lib/data";
-import { useCart } from "@/context/CartContext";
+import Image from "next/image";
+import AddToCartButton from "./AddToCartButton";
+import Rating from "./Rating";
 
-
-export default function Page({
+export default async function Page({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = use(params); 
-  const { addToCart } = useCart();
+  const { id } = await params;
+  const numericId = Number(id);
 
-  const product = products.find((p) => p.id === id);
+  const product = products.find((p) => p.id === numericId);
 
-  if (!product) {
-    return <div>Producto no encontrado</div>;
-  }
+  if (!product) return <div>Producto no encontrado</div>;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-2">
-        {product.name}
-      </h1>
+    <div className="max-w-6xl mx-auto px-6 py-10">
+      <div className="grid md:grid-cols-2 gap-10 items-start">
+        
+        {/* Imagen */}
+        <div className="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-lg">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover"
+            
+          />
+          
+        </div>
+        
+        {/* Información */}
+        <div className="space-y-6">
+          <h1 className="text-3xl font-bold">{product.name}</h1>
 
-      <p className="text-xl mb-4">
-        ${product.price}
-      </p>
-
-      <button
-        onClick={() => addToCart(product)}
-        className="bg-black text-white px-4 py-2 rounded"
-      >
-        Agregar al carrito
-      </button>
+          <p className="text-gray-600 leading-relaxed">
+            {product.description}
+          </p>
+          <Rating rating={product.rating} reviews={product.reviews} />
+          <p className="text-2xl font-semibold text-green-600">
+            ${product.price}
+          </p>
+          
+          <AddToCartButton product={product} />
+          
+        </div>
+      </div>
     </div>
   );
 }

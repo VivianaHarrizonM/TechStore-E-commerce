@@ -14,11 +14,9 @@ export default function HomePage() {
           Equipamiento premium para desarrolladores y creadores digitales.
         </p>
       </div>
-      <div className="bg-red-500 text-white p-10">
-  PRUEBA
-</div>
+    
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((p) => (
           <ProductCard key={p.id} product={p} />
         ))}
