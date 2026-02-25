@@ -1,0 +1,41 @@
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.carousel {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.carousel-image {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.carousel-image.active {
+  transform: translateX(0) scale(1.2);
+  opacity: 1;
+  z-index: 3;
+}
+
+.carousel-image.prev {
+  transform: translateX(-150px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.carousel-image.next {
+  transform: translateX(150px) scale(0.8);
+  opacity: 0.6;
+  z-index: 1;
+}

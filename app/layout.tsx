@@ -12,14 +12,16 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="bg-slate-950 text-slate-100 antialiased">
-        <AuthProvider>
+        
           <CartProvider>
-            <Navbar />
-            <Container>
-              {children}
-            </Container>
+            <AuthProvider>
+              <Navbar />
+              <Container>
+                {children}
+              </Container>
+            </AuthProvider>
           </CartProvider>
-        </AuthProvider>
+        
       </body>
     </html>
   );

@@ -16,53 +16,106 @@ export default function Navbar() {
   );
 
   return (
-    <div className="bg-slate-950 border-b border-slate-800">
-      <Container>
-        <div className="flex items-center justify-between py-4">
+    <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
 
-          <Link href="/" className="text-2xl font-bold">
-            TechStore
+      <Container>
+
+        <div className="flex items-center justify-between h-16">
+
+          {/* logo */}
+          <Link
+            href="/"
+            className="text-xl font-bold tracking-tight hover:text-emerald-400 transition"
+          >
+            ⚡ TechStore
           </Link>
 
-          <div className="flex gap-6 text-sm items-center">
 
-            <Link href="/productos">
-              💻 Productos
+          {/* menu */}
+          <nav className="flex items-center gap-6 text-sm">
+
+            <Link
+              href="/productos"
+              className="text-slate-300 hover:text-white transition"
+            >
+            💻 Productos
             </Link>
 
-            <Link href="/carrito">
-              🛒 Carrito {totalItems > 0 && `(${totalItems})`}
+
+            {/* carrito */}
+            <Link
+              href="/carrito"
+              className="relative text-slate-300 hover:text-white transition"
+            >
+              🛒 Carrito
+
+              {totalItems > 0 && (
+                <span className="
+                  absolute
+                  -top-2
+                  -right-4
+                  bg-emerald-500
+                  text-black
+                  text-xs
+                  font-bold
+                  px-2
+                  py-0.5
+                  rounded-full
+                ">
+                  {totalItems}
+                </span>
+              )}
+
             </Link>
 
+
+            {/* usuario */}
             {user ? (
-              <>
-                <span>
+              <div className="flex items-center gap-3">
+
+                <span className="text-emerald-400 font-medium">
                   👋 {user.name}
                 </span>
 
                 <button
                   onClick={logout}
-                  className="text-red-400 hover:text-red-300"
+                  className="
+                    px-3 py-1
+                    rounded-lg
+                    bg-slate-800
+                    hover:bg-red-600
+                    transition
+                  "
                 >
-                  Salir
+                  💨 Salir
                 </button>
-              </>
-            ) : (
-              <>
-                <Link href="/login">
-                  👤 Login
-                </Link>
 
-                <Link href="/register">
-                  📝 Registro
-                </Link>
-              </>
+              </div>
+            ) : (
+
+              <Link
+                href="/login"
+                className="
+                  px-4 py-2
+                  rounded-lg
+                  bg-emerald-500
+                  hover:bg-emerald-600
+                  text-black
+                  font-semibold
+                  transition
+                "
+              >
+                Iniciar sesión
+              </Link>
+
             )}
 
-          </div>
+          </nav>
 
         </div>
+
       </Container>
-    </div>
+
+    </header>
   );
 }

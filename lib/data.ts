@@ -34,21 +34,21 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    name: "Laptop Pro",
-    price: 15000,
-    image: "/laptopPro.jpg",
-    description:
-      "Laptop profesional con procesador de última generación, 16GB RAM y SSD de alta velocidad.",
-    rating: 4.5,
-    reviews: 128,
-  },
-  {
-    id: 5,
     name: "Audífonos inalámbricos",
     price: 1200,
     image: "/headphones.jpg",
     description:
       "Audífonos con cancelación de ruido, batería de larga duración y sonido envolvente.",
+    rating: 4.5,
+    reviews: 128,
+  },
+  {
+    id: 5,
+    name: "Laptop Pro",
+    price: 15000,
+    image: "/laptopPro.jpg",
+    description:
+      "Laptop profesional con procesador de última generación, 16GB RAM y SSD de alta velocidad.",
     rating: 4.5,
     reviews: 128,
   },
